@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ "$#" != "2" ]
+then
+    echo "This file is a part of shared-server-management, released under GPL 3.0."
+    exit 1
+fi
+if [ "$(whoami)" != "$2" ]
+    exec su "$2" -c "bash $0 \'$*\'"
+    exit
+fi
+cd "/home/$2/"
+if [ ! -d "/home/$2/rc.d" ]
+then
+    exit
+fi
+case "$1"
+    start)
+        find "/home/$2/rc.d" | grep '.start|.conf' | sort | while read line
+        do
+            echo "Starting $line" >&2
+            bash "$line" start
+        done
+        ;;
+    stop)
+        find "/home/$2/rc.d" | grep '.stop|.conf' | sort -r | while read line
+        do
+            echo "Starting $line" >&2
+            bash "$line" stop
+        done
+        ;;
+esac
