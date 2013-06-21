@@ -12,7 +12,7 @@ then
     echo "Run this as root." >&2
     exit 1
 fi
-case "$1"
+case "$1" in
     restart)
         "$0" stop
         exec "$0" start
