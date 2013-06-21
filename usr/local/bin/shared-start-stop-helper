@@ -6,7 +6,7 @@ then
     exit 1
 fi
 if [ "$(whoami)" != "$2" ]
-    exec su "$2" -c "bash $0 \'$*\'"
+    exec su "$2" -c "bash \'$(echo -n "$0" | sed -e "s/'/'\\''/g")\' \'$(echo -n "$1" | sed -e "s/'/'\\''/g")\' \'$(echo -n "$2" | sed -e "s/'/'\\''/g")\'"
     exit
 fi
 cd "/home/$2/"
