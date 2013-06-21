@@ -1,0 +1,11 @@
+Here is the per-user configuration directory.
+Files ending with .start will be executed during boot;
+files ending with .stop will be executed during shutdown;
+files ending with .conf will be executed during both boot and shutdown with an
+argument of either 'start' or 'stop'.
+
+Scripts of every user will be executed one after one in alphabetical order;
+scripts of different users will be executed parallelly.
+
+For more information, please visit:
+https://github.com/m13253/shared-server-management
