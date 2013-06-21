@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+/usr/local/bin/shared-shared-start-stop stop &>/dev/null
+exit 0
