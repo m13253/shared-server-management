@@ -20,7 +20,7 @@ case "$1" in
     start|stop)
         for i in /home/*/
         do
-            bash shared-start-stop-helper "$1" "$i" &
+            bash "$0-helper" "$1" "$i" &
         done
         wait
         ;;
