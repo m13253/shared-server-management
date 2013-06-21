@@ -1,0 +1,3 @@
+#!/bin/bash
+
+php-fpm -c ~/my_php.ini &>/dev/null &
