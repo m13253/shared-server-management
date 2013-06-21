@@ -18,9 +18,12 @@ case "$1" in
         exec "$0" start
         ;;
     start|stop)
-        for i in /home/*/
+        for i in /home/*
         do
-            bash "$0-helper" "$1" "$i" &
+            if [ -d "$i" ]
+            then
+                bash "$0-helper" "$1" "$i" &
+            fi
         done
         wait
         ;;
