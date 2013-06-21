@@ -3,6 +3,7 @@
 if [ "$#" != "2" ]
 then
     echo "This file is a part of shared-server-management, released under GPL 3.0."
+    echo 'More information: https://github.com/m13253/shared-server-management'
     exit 1
 fi
 target_username="$(basename "$2")"
