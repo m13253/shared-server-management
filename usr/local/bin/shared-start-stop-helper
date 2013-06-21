@@ -21,7 +21,7 @@ if [ ! -d "$2/rc.d" ]
 then
     exit
 fi
-case "$1"
+case "$1" in
     start)
         find "$2/rc.d" | grep '.start|.conf' | sort | while read line
         do
