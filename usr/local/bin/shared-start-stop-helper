@@ -5,9 +5,10 @@ then
     echo "This file is a part of shared-server-management, released under GPL 3.0."
     exit 1
 fi
-if [ "$(whoami)" != "$(basename "$2")" ]
+target_username="$(basename "$2")"
+if [ "$(whoami)" != "$target_username" ]
 then
-    exec su "$2" -c "bash \'$(echo -n "$0" | sed -e "s/'/'\\''/g")\' \'$(echo -n "$1" | sed -e "s/'/'\\''/g")\' \'$(echo -n "$2" | sed -e "s/'/'\\''/g")\'"
+    exec su "$target_username" -c "bash '$(echo -n "$0" | sed -e "s/'/'\\\\''/g")' '$(echo -n "$1" | sed -e "s/'/'\\\\''/g")' '$(echo -n "$2" | sed -e "s/'/'\\\\''/g")'"
     exit
 fi
 cd "$2"
@@ -24,14 +25,14 @@ case "$1"
     start)
         find "$2/rc.d" | grep '.start|.conf' | sort | while read line
         do
-            echo "Starting $line" >&2
+            echo ":: Starting $line" >&2
             bash "$line" start
         done
         ;;
     stop)
         find "$2/rc.d" | grep '.stop|.conf' | sort -r | while read line
         do
-            echo "Stopping $line" >&2
+            echo ":: Stopping $line" >&2
             bash "$line" stop
         done
         ;;
