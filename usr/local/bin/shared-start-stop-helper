@@ -5,33 +5,33 @@ then
     echo "This file is a part of shared-server-management, released under GPL 3.0."
     exit 1
 fi
-if [ "$(whoami)" != "$2" ]
+if [ "$(whoami)" != "$(basename "$2")" ]
 then
     exec su "$2" -c "bash \'$(echo -n "$0" | sed -e "s/'/'\\''/g")\' \'$(echo -n "$1" | sed -e "s/'/'\\''/g")\' \'$(echo -n "$2" | sed -e "s/'/'\\''/g")\'"
     exit
 fi
-cd "/home/$2/"
+cd "$2"
 source /etc/profile
-if [ -f "/home/$2/.bashrc" ]
+if [ -f "$2/.bashrc" ]
 then
-    source "/home/$2/.bashrc"
+    source "$2/.bashrc"
 fi
-if [ ! -d "/home/$2/rc.d" ]
+if [ ! -d "$2/rc.d" ]
 then
     exit
 fi
 case "$1"
     start)
-        find "/home/$2/rc.d" | grep '.start|.conf' | sort | while read line
+        find "$2/rc.d" | grep '.start|.conf' | sort | while read line
         do
             echo "Starting $line" >&2
             bash "$line" start
         done
         ;;
     stop)
-        find "/home/$2/rc.d" | grep '.stop|.conf' | sort -r | while read line
+        find "$2/rc.d" | grep '.stop|.conf' | sort -r | while read line
         do
-            echo "Starting $line" >&2
+            echo "Stopping $line" >&2
             bash "$line" stop
         done
         ;;
