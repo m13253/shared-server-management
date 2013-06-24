@@ -3,3 +3,4 @@ Shared Server Management
 
 These are scripts for management of daemons on a server with multiple users.
 
+For an example configuration, see ./home/example/rc.d in this repository.
