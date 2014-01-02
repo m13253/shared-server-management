@@ -6,7 +6,7 @@ then
     echo
     echo "This file is a part of shared-server-management, released under GPL 3.0."
     echo 'More information: https://github.com/m13253/shared-server-management'
-    exit
+    exit 1
 fi
 if [ "$(id -u)" != "0" ]
 then
@@ -32,3 +32,4 @@ case "$1" in
         exec "$0"
         ;;
 esac
+exit 0

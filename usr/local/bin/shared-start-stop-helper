@@ -10,7 +10,7 @@ target_username="$(basename "$2")"
 if [ "$(whoami)" != "$target_username" ]
 then
     exec su "$target_username" -c "bash '$(echo -n "$0" | sed -e "s/'/'\\\\''/g")' '$(echo -n "$1" | sed -e "s/'/'\\\\''/g")' '$(echo -n "$2" | sed -e "s/'/'\\\\''/g")'"
-    exit
+    exit 1
 fi
 cd "$2"
 source /etc/profile
@@ -20,7 +20,8 @@ then
 fi
 if [ ! -d "$2/rc.d" ]
 then
-    exit
+    echo ":: Directory $2/rc.d not found, skipping." >&2
+    exit 2
 fi
 case "$1" in
     start)
@@ -38,3 +39,4 @@ case "$1" in
         done
         ;;
 esac
+exit 0
