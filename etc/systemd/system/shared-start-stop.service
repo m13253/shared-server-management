@@ -3,6 +3,7 @@
 
 [Unit]
 Description=Shared Server Management Service
+After=network.target
 
 [Service]
 type=oneshot
