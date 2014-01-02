@@ -14,8 +14,11 @@ install:
 	install -m0644 etc/systemd/system/shared-start-stop.service $(DESTDIR)/etc/systemd/system/
 	mkdir -p $(DESTDIR)/etc/init.d/
 	install -m0755 etc/init.d/shared-start-stop $(DESTDIR)/etc/init.d/shared-start-stop
+	mkdir -p $(DESTDIR)/etc/skel/rc.d/
+	install -m0644 etc/skel/rc.d/README $(DESTDIR)/etc/skel/rc.d/README
 
 uninstall:
+	rm -Rf $(DESTDIR)/etc/skel/rc.d/
 	rm -f $(DESTDIR)/etc/init.d/shared-start-stop
 	rm -f $(DESTDIR)/etc/systemd/system/shared-start-stop.service
 	rm -f $(DESTDIR)/usr/local/bin/shared-start-stop
