@@ -9,7 +9,7 @@
 # Default-Stop:      0 1 6
 # Short-Description: Shared Server Management Service.
 # Description:       Shared Server Management Service.
-#                    This service provides a simple interface for users on a shared server to manage their own services.
+#                    This service provides a simple interface for multiple users on a shared server to manage their own services.
 ### END INIT INFO
 
 exec /usr/local/bin/shared-start-stop "$@"

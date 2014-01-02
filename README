@@ -1,6 +1,7 @@
 Shared Server Management
 ========================
 
-These are scripts for management of daemons on a server with multiple users.
+Shared Server Management is a simple interface for users on a shared server to
+manage their own services.
 
 For an example configuration, see ./home/example/rc.d in this repository.
