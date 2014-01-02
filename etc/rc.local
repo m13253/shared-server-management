@@ -1,4 +1,6 @@
 #!/bin/sh -e
 
+# You probably do not want to use it. Use services instead.
+
 /usr/local/bin/shared-start-stop start &>/dev/null &
 exit 0
