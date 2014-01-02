@@ -25,14 +25,14 @@ then
 fi
 case "$1" in
     start)
-        find "$2/rc.d" | grep -E '\.start$|\.conf$' | sort | while read line
+        find "$2/rc.d" | grep -E '\.start$|\.conf$|\.service$' | sort | while read line
         do
             echo ":: Starting $line" >&2
             bash "$line" start
         done
         ;;
     stop)
-        find "$2/rc.d" | grep -E '\.stop$|\.conf$' | sort -r | while read line
+        find "$2/rc.d" | grep -E '\.stop$|\.conf$|\.service$' | sort -r | while read line
         do
             echo ":: Stopping $line" >&2
             bash "$line" stop
