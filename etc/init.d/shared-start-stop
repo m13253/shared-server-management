@@ -9,4 +9,4 @@
 #                    This service provides a simple interface for users on a shared server to manage their own services.
 ### END INIT INFO
 
-exec /usr/local/bin/shared-start-stop "$0"
+exec /usr/local/bin/shared-start-stop "$@"
