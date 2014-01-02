@@ -7,7 +7,7 @@ Description=Shared Server Management Service
 [Service]
 type=oneshot
 RemainAfterExit=yes
-ExecShart=/usr/local/bin/shared-start-stop start
+ExecStart=/usr/local/bin/shared-start-stop start
 ExecStop=/usr/local/bin/shared-start-stop stop
 
 [Install]
