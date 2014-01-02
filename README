@@ -4,4 +4,25 @@ Shared Server Management
 Shared Server Management is a simple interface for users on a shared server to
 manage their own services.
 
+
+Installation
+------------
+
+git clone git://github.com/m13253/shared-server-management.git
+cd shared-server-management
+sudo make install
+
+
+Configuration
+-------------
+
 For an example configuration, see ./home/example/rc.d in this repository.
+
+
+Warning
+-------
+
+This software, released under GNU General Public License version 3, is provided
+AS IS, and comes with ABSOLUTELY NO WARRANTY.
+This software may contain bugs which may cause damage including data loss or
+leakage of confidential data. Please use this software at your own risk.
