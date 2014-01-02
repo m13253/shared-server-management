@@ -1,0 +1,14 @@
+; This file is a part of shared-server-management, released under GPL 3.0.
+; More information: https://github.com/m13253/shared-server-management
+
+[Unit]
+Description=Shared Server Management Service
+
+[Service]
+type=oneshot
+RemainAfterExit=yes
+ExecShart=/usr/local/bin/shared-start-stop start
+ExecStop=/usr/local/bin/shared-start-stop stop
+
+[Install]
+WantedBy=multi-user.target
