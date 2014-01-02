@@ -4,7 +4,7 @@
 DESTDIR=
 
 all:
-	@echo Please run 'sudo make install'.
+	@echo "Please run 'sudo make install'."
 
 install:
 	mkdir -p $(DESTDIR)/usr/local/bin/
@@ -16,6 +16,7 @@ install:
 	install -m0755 etc/init.d/shared-start-stop $(DESTDIR)/etc/init.d/shared-start-stop
 	mkdir -p $(DESTDIR)/etc/skel/rc.d/
 	install -m0644 etc/skel/rc.d/README $(DESTDIR)/etc/skel/rc.d/README
+	@echo "If you use sysvinit, you may need to 'sudo update-rc.d shared-start-stop defaults'."
 
 uninstall:
 	rm -Rf $(DESTDIR)/etc/skel/rc.d/
