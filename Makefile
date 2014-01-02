@@ -16,11 +16,14 @@ install:
 	install -m0755 etc/init.d/shared-start-stop $(DESTDIR)/etc/init.d/shared-start-stop
 	mkdir -p $(DESTDIR)/etc/skel/rc.d/
 	install -m0644 etc/skel/rc.d/README $(DESTDIR)/etc/skel/rc.d/README
+	@echo "If you use systemd, you may need to 'sudo systemctl enable shared-start-stop'."
 	@echo "If you use sysvinit, you may need to 'sudo update-rc.d shared-start-stop defaults'."
 
 uninstall:
 	rm -Rf $(DESTDIR)/etc/skel/rc.d/
 	rm -f $(DESTDIR)/etc/init.d/shared-start-stop
+	rm -f $(DESTDIR)/etc/systemd/system/multi-user.target.wants/shared-start-stop.service
 	rm -f $(DESTDIR)/etc/systemd/system/shared-start-stop.service
 	rm -f $(DESTDIR)/usr/local/bin/shared-start-stop
 	rm -f $(DESTDIR)/usr/local/bin/shared-start-stop-helper
+	@echo "If you use sysvinit, you may need to 'sudo update-rc.d shared-start-stop remove'."
