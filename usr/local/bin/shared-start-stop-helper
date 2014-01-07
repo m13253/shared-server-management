@@ -6,7 +6,11 @@ then
     echo 'More information: https://github.com/m13253/shared-server-management'
     exit 1
 fi
-target_username="$(basename "$2")" # FIXME: Assume that /home/foo is owned by foo
+target_username="$(stat -c '%U' "$2")" || exit
+if [ -z "$target_username" -o "$target_username" == "root" ] then
+    echo ":: Refused to 'su root'."
+    exit 1
+fi
 if [ "$(whoami)" != "$target_username" ]
 then
     exec su "$target_username" -c "bash '$(echo -n "$0" | sed -e "s/'/'\\\\''/g")' '$(echo -n "$1" | sed -e "s/'/'\\\\''/g")' '$(echo -n "$2" | sed -e "s/'/'\\\\''/g")'"
