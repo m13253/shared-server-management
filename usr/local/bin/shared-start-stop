@@ -5,7 +5,7 @@ then
     echo "Usage: $0 [start|stop|restart]"
     echo
     echo "This file is a part of shared-server-management, released under GPL 3.0."
-    echo 'More information: https://github.com/m13253/shared-server-management'
+    echo "More information: https://github.com/m13253/shared-server-management"
     exit 1
 fi
 if [ "$(id -u)" != "0" ]
