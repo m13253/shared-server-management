@@ -7,7 +7,8 @@ then
     exit 1
 fi
 target_username="$(stat -c '%U' "$2")" || exit
-if [ -z "$target_username" -o "$target_username" == "root" ] then
+if [ -z "$target_username" -o "$target_username" == "root" ]
+then
     echo ":: Refused to 'su root'."
     exit 1
 fi
