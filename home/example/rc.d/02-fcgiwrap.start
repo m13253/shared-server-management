@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm -f /tmp/fcgiwrap-$USER.sock
+/usr/sbin/fcgiwrap -f -s unix:/tmp/fcgiwrap-$USER.sock &
+# or use TCP port:
+# /usr/sbin/fcgiwrap -f -s tcp:127.0.0.1:19474 &
